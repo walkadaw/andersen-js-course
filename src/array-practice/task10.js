@@ -19,7 +19,7 @@
 
 
 export function membersOnActiveMeetups(meetups) {
-  const countMembersOnActive = 0;
+  let countMembersOnActive = 0;
 
   for (let meetup of meetups) {
     if (meetup.isActive) {
