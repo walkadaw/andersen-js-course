@@ -13,3 +13,27 @@
  * generator.next(); -> 'Complete!'
  * generator.next(); -> 'Complete!'
  */
+
+export function createGenerator( arr ){
+	let index = 0;
+
+	return {
+		next() {
+			return console.log(
+				index < arr.length ? 
+					arr[index++] : 
+					"Complete!"
+				);
+		}
+	}
+}
+
+/*
+* Не получилось решить таким методом. Можно ли как то указать дефолтное значение для yield->value 
+*/ 
+// export function *createGenerator( arr ){
+
+// 	yield* arr;
+
+// 	return "Complete!";
+// }
