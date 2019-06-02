@@ -17,15 +17,15 @@
 //   { name: 'React', isActive: true, members: 500 },
 // ];
 
+
 export function membersOnActiveMeetups(meetups) {
-	let countMembersOnActive = 0;
+  const countMembersOnActive = 0;
 
-	for(let meetup of meetups){
-		if(meetup.isActive){
-			countMembersOnActive += meetup.members;
-		}
-	}
+  for (let meetup of meetups) {
+    if (meetup.isActive) {
+      countMembersOnActive += meetup.members;
+    }
+  }
 
-	return countMembersOnActive;
-
+  return countMembersOnActive;
 }

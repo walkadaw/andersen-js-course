@@ -31,8 +31,8 @@ export function task4Old() {
 // При желании, можете использовать стрелочную функцию, вместо обычной
 
 export function task4New() {
-  let x = 10;
-  let y = 20;
+  const x = 10;
+  const y = 20;
 
   const obj = {
     x,
@@ -43,9 +43,9 @@ export function task4New() {
     }
   }
 
-  const foo = () => "text";
+  const foo = () => 'text';
 
-  obj[`baz${foo()}`] = "new filed";
+  obj[`baz${foo()}`] = 'new filed';
 
   return obj;
 }

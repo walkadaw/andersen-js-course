@@ -25,7 +25,7 @@ export function task7New() {
   const obj = { test: 0 };
   const obj2 = { foo: 1, bar: 2 };
 
-  //return ({...obj, ...obj2});
+  // return ({...obj, ...obj2});
   return Object.assign(obj, obj2);
 
 }

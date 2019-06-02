@@ -11,12 +11,12 @@
  * console.log(indexOfAll([1, 2, 3], 4)); -> []
  */
 
-export function indexOfAll( arr, value ){
-	const allIndex = [];
+export function indexOfAll(arr, value) {
+  const allIndex = [];
 
-	arr.forEach( (element, index) => {
-		if( element === value ){
-			allIndex.push(index);
+  arr.forEach((element, index) => {
+    if (element === value) {
+      allIndex.push(index);
 		}
 	});
 

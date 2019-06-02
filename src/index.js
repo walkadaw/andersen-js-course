@@ -108,7 +108,7 @@
 // console.log(union([5, 1, 3, 3, 4], [1, 3, 4])); // [5, 1, 3, 4]
 
 // console.log('=============');
-// 
+
 //  const generator = createGenerator([1, '6', 3, 2]);
 //  generator.next(); // -> 1
 //  generator.next(); //-> '6'
@@ -138,10 +138,10 @@
 
 // console.log(indexOfAll([1, 2, 3, 1, 2, 3], 1)); //-> [0, 3]
 // console.log(indexOfAll([1, 2, 3], 4)); //-> []
-// 
-// 
+
+
 // console.log('=============');
-// 
+
 // const meetups = [
 //   { name: 'JavaScript', isActive: true, members: 100 },
 //   { name: 'Angular', isActive: true, members: 900 },

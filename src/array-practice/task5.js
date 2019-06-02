@@ -14,7 +14,7 @@
  * generator.next(); -> 'Complete!'
  */
 
-export function createGenerator( arr ){
+export function createGenerator(arr) {
 	let index = 0;
 
 	return {
