@@ -14,26 +14,27 @@
  * generator.next(); -> 'Complete!'
  */
 
+// eslint-disable-next-line import/prefer-default-export
 export function createGenerator(arr) {
-	let index = 0;
+  let index = 0;
 
-	return {
-		next() {
-			return console.log(
-				index < arr.length ? 
-					arr[index++] : 
-					"Complete!"
-				);
-		}
-	}
+  return {
+    next() {
+      let result = 'Complete!';
+
+      if (index < arr.length) {
+        result = arr[index];
+        index += 1;
+      }
+
+      return console.log(result);
+    },
+  };
 }
 
 /*
-* Не получилось решить таким методом. Можно ли как то указать дефолтное значение для yield->value 
-*/ 
-// export function *createGenerator( arr ){
-
+ * Не получилось решить таким методом. Можно ли как то указать дефолтное значение для yield->value
+ */
+// export function* createGenerator(arr){
 // 	yield* arr;
-
-// 	return "Complete!";
 // }

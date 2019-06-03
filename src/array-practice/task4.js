@@ -9,5 +9,5 @@
  */
 
 export function union(arr, arrTwo) {
-	return [...new Set( [ ...arr, ...arrTwo] )];
+  return [...new Set([...arr, ...arrTwo])];
 }

@@ -16,5 +16,5 @@
  */
 
 export function any(arr, callBack = x => x) {
-	return arr.some(callBack);
+  return arr.some(callBack);
 }

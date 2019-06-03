@@ -17,9 +17,8 @@ export function indexOfAll(arr, value) {
   arr.forEach((element, index) => {
     if (element === value) {
       allIndex.push(index);
-		}
-	});
+    }
+  });
 
-	return allIndex;
-
+  return allIndex;
 }

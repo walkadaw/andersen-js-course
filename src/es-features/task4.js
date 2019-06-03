@@ -40,8 +40,8 @@ export function task4New() {
 
     bar() {
       return this.x + this.y;
-    }
-  }
+    },
+  };
 
   const foo = () => 'text';
 

@@ -23,7 +23,5 @@
  */
 
 export function transformArrayToNumber(arr, callBack, initialValue = 0) {
-
- 	return arr.reduce(callBack, initialValue);
-	
+  return arr.reduce(callBack, initialValue);
 }

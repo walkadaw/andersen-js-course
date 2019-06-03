@@ -27,5 +27,4 @@ export function task7New() {
 
   // return ({...obj, ...obj2});
   return Object.assign(obj, obj2);
-
 }

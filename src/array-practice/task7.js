@@ -13,5 +13,5 @@
  */
 
 export function take(arr, countElement) {
-	return arr.slice(0, countElement);
+  return arr.slice(0, countElement);
 }

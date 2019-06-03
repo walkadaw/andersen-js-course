@@ -22,6 +22,7 @@ export function task1Old(a, b, c) {
 /*
  * export function task1New(a, b = 70, c = 420) {
  *  return a+ b + c;
- * } 
-*/
+ * }
+ */
+
 export const task1New = (a, b = 70, c = 420) => a + b + c;
