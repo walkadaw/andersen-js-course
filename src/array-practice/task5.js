@@ -14,7 +14,6 @@
  * generator.next(); -> 'Complete!'
  */
 
-// eslint-disable-next-line import/prefer-default-export
 export function createGenerator(arr) {
   let index = 0;
 
@@ -32,9 +31,19 @@ export function createGenerator(arr) {
   };
 }
 
-/*
- * Не получилось решить таким методом. Можно ли как то указать дефолтное значение для yield->value
- */
-// export function* createGenerator(arr){
-// 	yield* arr;
-// }
+// Реализация через генератор
+// PS чтобы не делять кастыль на next() переименовал вызов слудующего на nextGen()
+
+export function createGeneratorTwo(arr) {
+  const arrayGenerator = (function*() {
+    yield* arr;
+  })();
+
+  arrayGenerator.nextGen = () => {
+    const result = arrayGenerator.next();
+    if (result.done) result.value = 'Complete!';
+    return console.log(result.value);
+  };
+
+  return arrayGenerator;
+}
