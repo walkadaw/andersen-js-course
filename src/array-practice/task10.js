@@ -10,7 +10,7 @@
 
 // Раскомментировать нижнее, при начале реализации
 
-// const meetupss = [
+// const meetups = [
 //   { name: 'JavaScript', isActive: true, members: 100 },
 //   { name: 'Angular', isActive: true, members: 900 },
 //   { name: 'Node', isActive: false, members: 600 },
@@ -18,13 +18,7 @@
 // ];
 
 export function membersOnActiveMeetups(meetups) {
-  let countMembersOnActive = 0;
-
-  for (let meetup of meetups) {
-    if (meetup.isActive) {
-      countMembersOnActive += meetup.members;
-    }
-  }
-
-  return countMembersOnActive;
+  return meetups.reduce((countMembersOnActive, { isActive, members }) => {
+    return isActive ? countMembersOnActive + members : countMembersOnActive;
+  }, 0);
 }
