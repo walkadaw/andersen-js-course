@@ -31,21 +31,18 @@ export function createGenerator(arr) {
   };
 }
 
-// Реализация через генератор
-// PS чтобы не делять кастыль на next() переименовал вызов слудующего на nextGen()
-
 export function createGeneratorTwo(arr) {
-  const arrayGenerator = {
-    gen: (function*() {
-      yield* arr;
-    })(),
+  // Реализация через генератор
+  // const arrayGenerator = (function*() {
+  //   yield* arr;
+  // })();
+  const arrayGenerator = arr[Symbol.iterator]();
 
-    nextGen: () => {
-      const result = arrayGenerator.gen.next();
+  return {
+    next() {
+      const result = arrayGenerator.next();
       if (result.done) result.value = 'Complete!';
       return result.value;
     },
   };
-
-  return arrayGenerator;
 }

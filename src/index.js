@@ -121,12 +121,12 @@
 // console.log('Через Генератор');
 
 // const generatorTwo = createGeneratorTwo([1, '6', 3, 2]);
-// console.log(generatorTwo.nextGen()); // -> 1
-// console.log(generatorTwo.nextGen()); // -> '6'
-// console.log(generatorTwo.nextGen()); // -> 3
-// console.log(generatorTwo.nextGen()); // -> 2
-// console.log(generatorTwo.nextGen()); // -> 'Complete!'
-// console.log(generatorTwo.nextGen()); // -> 'Complete!
+// console.log(generatorTwo.next()); // -> 1
+// console.log(generatorTwo.next()); // -> '6'
+// console.log(generatorTwo.next()); // -> 3
+// console.log(generatorTwo.next()); // -> 2
+// console.log(generatorTwo.next()); // -> 'Complete!'
+// console.log(generatorTwo.next()); // -> 'Complete!
 
 // console.log('=============');
 // console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc + item)); // 60
