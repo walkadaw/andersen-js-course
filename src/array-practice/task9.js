@@ -12,13 +12,12 @@
  */
 
 export function indexOfAll(arr, value) {
-  const allIndex = [];
-
-  arr.forEach((element, index) => {
+  const allIndex = arr.reduce((acc, element, index) => {
     if (element === value) {
-      allIndex.push(index);
+      acc.push(index);
     }
-  });
+    return acc;
+  }, []);
 
   return allIndex;
 }
