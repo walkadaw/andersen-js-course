@@ -26,7 +26,7 @@ export function createGenerator(arr) {
         index += 1;
       }
 
-      return console.log(result);
+      return result;
     },
   };
 }
@@ -35,14 +35,16 @@ export function createGenerator(arr) {
 // PS чтобы не делять кастыль на next() переименовал вызов слудующего на nextGen()
 
 export function createGeneratorTwo(arr) {
-  const arrayGenerator = (function*() {
-    yield* arr;
-  })();
+  const arrayGenerator = {
+    gen: (function*() {
+      yield* arr;
+    })(),
 
-  arrayGenerator.nextGen = () => {
-    const result = arrayGenerator.next();
-    if (result.done) result.value = 'Complete!';
-    return console.log(result.value);
+    nextGen: () => {
+      const result = arrayGenerator.gen.next();
+      if (result.done) result.value = 'Complete!';
+      return result.value;
+    },
   };
 
   return arrayGenerator;

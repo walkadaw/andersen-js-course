@@ -111,22 +111,22 @@
 // console.log('=============');
 
 // const generator = createGenerator([1, '6', 3, 2]);
-// generator.next(); // -> 1
-// generator.next(); // -> '6'
-// generator.next(); // -> 3
-// generator.next(); // -> 2
-// generator.next(); // -> 'Complete!'
-// generator.next(); // -> 'Complete!'
+// console.log(generator.next()); // -> 1
+// console.log(generator.next()); // -> '6'
+// console.log(generator.next()); // -> 3
+// console.log(generator.next()); // -> 2
+// console.log(generator.next()); // -> 'Complete!'
+// console.log(generator.next()); // -> 'Complete!'
 
 // console.log('Через Генератор');
 
 // const generatorTwo = createGeneratorTwo([1, '6', 3, 2]);
-// generatorTwo.nextGen(); // -> 1
-// generatorTwo.nextGen(); // -> '6'
-// generatorTwo.nextGen(); // -> 3
-// generatorTwo.nextGen(); // -> 2
-// generatorTwo.nextGen(); // -> 'Complete!'
-// generatorTwo.nextGen(); // -> 'Complete!
+// console.log(generatorTwo.nextGen()); // -> 1
+// console.log(generatorTwo.nextGen()); // -> '6'
+// console.log(generatorTwo.nextGen()); // -> 3
+// console.log(generatorTwo.nextGen()); // -> 2
+// console.log(generatorTwo.nextGen()); // -> 'Complete!'
+// console.log(generatorTwo.nextGen()); // -> 'Complete!
 
 // console.log('=============');
 // console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc + item)); // 60
