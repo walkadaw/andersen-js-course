@@ -33,6 +33,7 @@ export function task4Old() {
 export function task4New() {
   const x = 10;
   const y = 20;
+  const foo = () => 'text';
 
   const obj = {
     x,
@@ -41,11 +42,8 @@ export function task4New() {
     bar() {
       return this.x + this.y;
     },
+    [`baz${foo()}`]: 'new filed',
   };
-
-  const foo = () => 'text';
-
-  obj[`baz${foo()}`] = 'new filed';
 
   return obj;
 }
