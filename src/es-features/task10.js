@@ -65,7 +65,7 @@ class NewA {
 }
 
 class NewB extends NewA {
-  constructor(name = 'test', age = 0) {
+  constructor(name, age) {
     super(name);
     this.age = age;
   }
@@ -85,17 +85,17 @@ class NewB extends NewA {
   set color(color) {
     this._color = color;
   }
-}
 
-// Неуверен насчет этого решения??
-// NewB.defaultUser = () => new NewB('text', 0);
+  static defaultUser() {
+    return new NewB('test', 0);
+  }
+}
 
 export function task10New() {
   const newB = new NewB('Max', 12);
   console.log(newB.getName('Best')); // Max Best
   console.log(newB.getAge()); // 12
-  // console.log(NewB.defaultUser()); // {name: 'test', age: 0}
-  console.log(new NewB()); // {name: 'test', age: 0}
+  console.log(NewB.defaultUser()); // {name: 'test', age: 0}
   newB.color = 'red';
   console.log(newB.color); // red
 
