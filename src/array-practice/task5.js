@@ -40,9 +40,8 @@ export function createGeneratorTwo(arr) {
 
   return {
     next() {
-      const result = arrayGenerator.next();
-      if (result.done) result.value = 'Complete!';
-      return result.value;
+      const { done, value } = arrayGenerator.next();
+      return done ? 'Complete!' : value;
     },
   };
 }
