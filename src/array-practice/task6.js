@@ -22,6 +22,6 @@
  * console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc - item)); -> -60
  */
 
-export function transformArrayToNumber(arr, callBack, initialValue = 0) {
+export default function transformArrayToNumber(arr, callBack, initialValue = 0) {
   return arr.reduce(callBack, initialValue);
 }

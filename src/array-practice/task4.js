@@ -8,6 +8,6 @@
  * console.log(union([5, 1, 3, 3, 4], [1, 3, 4])); -> [5, 1, 3, 4]
  */
 
-export function union(arr, arrTwo) {
+export default function union(arr, arrTwo) {
   return [...new Set([...arr, ...arrTwo])];
 }

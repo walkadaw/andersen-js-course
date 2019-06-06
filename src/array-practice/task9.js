@@ -11,7 +11,7 @@
  * console.log(indexOfAll([1, 2, 3], 4)); -> []
  */
 
-export function indexOfAll(arr, value) {
+export default function indexOfAll(arr, value) {
   const allIndex = arr.reduce((acc, element, index) => {
     if (element === value) {
       acc.push(index);
