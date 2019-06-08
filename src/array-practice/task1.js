@@ -14,3 +14,7 @@
  * console.log(any([0, 0, 1, 0])); -> true
  * console.log(any([0, 0, 0, 0])); -> false
  */
+
+export default function any(arr, callBack = x => x) {
+  return arr.some(callBack);
+}

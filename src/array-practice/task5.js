@@ -13,3 +13,35 @@
  * generator.next(); -> 'Complete!'
  * generator.next(); -> 'Complete!'
  */
+
+export function createGenerator(arr) {
+  let index = 0;
+
+  return {
+    next() {
+      let result = 'Complete!';
+
+      if (index < arr.length) {
+        result = arr[index];
+        index += 1;
+      }
+
+      return result;
+    },
+  };
+}
+
+export function createGeneratorTwo(arr) {
+  // Реализация через генератор
+  // const arrayGenerator = (function*() {
+  //   yield* arr;
+  // })();
+  const arrayGenerator = arr[Symbol.iterator]();
+
+  return {
+    next() {
+      const { done, value } = arrayGenerator.next();
+      return done ? 'Complete!' : value;
+    },
+  };
+}
