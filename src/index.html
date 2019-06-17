@@ -7,20 +7,34 @@
     <title>Andersen JS Course</title>
   </head>
   <body>
-    <h1>
-      Andersen JS Course
-    </h1>
-    <div class="ingredients">
-      Ингридиенты
+    <div class="content">
+      <div class="row col-1">
+        <div class="ingredients">
+          <ul></ul>
+        </div>
+      </div>
+      <div class="row col-2">
+          <button type="button" id="nextRecipes"></button>
+        <div class="recipes">
+          <ul></ul>
+          <button type="button" id="addRecipes">+</button>
+        </div>
+        <div class="alchemist">
+          <button type="button" id="createElement">Создать</button>
+          <ul id="alchemistItems"></ul>
+        </div>
+        <button type="button" id="clear">Очистить</button>
+      </div>
+      <div class="message"></div>
     </div>
-    <div class="recipes">
-      Рецепты
+    <div class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h3>Новый рецепт</h3>
+        <div class="body">
+           
+        </div>
     </div>
-    <div class="alchemist">
-      Алхемический стол
-      <button type="button" id="createElement">Создать</button>
-      <button type="button" id="clear">Очистить</button>
     </div>
-    <div class="message"></div>
   </body>
 </html>
