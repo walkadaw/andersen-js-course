@@ -1,38 +1,28 @@
 class Model {
-  constructor() {
-    this.allItem = [
-      { name: 'Вода', img: 'water' },
-      { name: 'Огонь', img: 'fire' },
-      { name: 'Земля', img: 'earn' },
-      { name: 'Воздух', img: 'air' },
-      { name: 'Палка', img: 'stick' },
-      { name: 'Факел', img: 'torch' },
-    ];
-    this.item = [0, 1, 2, 3, 4];
-    this.recipes = [{ newItem: 5, itemCraft: [4, 1] }];
+  constructor(allItem, startItem, recipes) {
+    this.allItem = allItem;
+    this.item = startItem;
+    this.recipes = recipes;
   }
 
   craftNewItem(idRecipes, items) {
-    const { newItem, itemCraft } = this.recipes[idRecipes];
+    const { newItem, needItemCraft } = this.recipes[idRecipes];
     const isCraft =
-      itemCraft.length === items.length
-        ? itemCraft.every(item => items.some(needItem => needItem === item))
+      needItemCraft.length === items.length
+        ? needItemCraft.every(item => items.some(needItem => needItem === item))
         : false;
+
     let result = {
       messageType: 'error',
       message: 'Для того чтобы получить новый ингредиент нужно следовать рецепту',
     };
 
     if (isCraft && items.length > 0) {
+      result = this.getInfoItem(newItem);
+
       if (!this.item.includes(newItem)) {
         this.item.push(newItem);
-
-        result = this.getInfoItem(newItem);
-      } else {
-        result = {
-          messageType: 'info',
-          message: 'Вы уже открыли данный ингридиент',
-        };
+        result.createItem = true;
       }
     } else if (items.length === 0) {
       result = {
@@ -44,9 +34,35 @@ class Model {
     return result;
   }
 
+  newRecept({ nameNewItem, needItemCraft, image = '/images/icon/none.png' }) {
+    const isFindName = this.allItem.some(({ name }) => name === nameNewItem);
+    if (isFindName) {
+      return {
+        messageType: 'error',
+        message: 'Такой ингредиент уже есть',
+      };
+    }
+
+    const idNewItem = this.allItem.length;
+    const idNewRecept = this.recipes.length;
+
+    this.allItem.push({ name: nameNewItem, img: image });
+    this.recipes.push({ newItem: idNewItem, needItemCraft });
+
+    return {
+      id: idNewRecept,
+      name: nameNewItem,
+      img: image,
+    };
+  }
+
   getInfoItem(id) {
-    const result = this.allItem[id];
-    result.id = id;
+    const result = {
+      id,
+      name: this.allItem[id].name,
+      img: this.allItem[id].img,
+    };
+
     return result;
   }
 }
