@@ -22,24 +22,12 @@ class Controller {
 
   newCraft = ({ itemCreateName, nameItemOnTable }) => {
     const result = this.model.craftNewItem(itemCreateName, nameItemOnTable);
-    if (result.messageType) {
-      return this.view.showMessage(result);
-    }
-
-    return this.view.successCreate(itemCreateName, result);
+    this.view.addNewCraftItem(result);
   };
 
   createRecept = newRecept => {
     const result = this.model.addNewRecept(newRecept);
-    if (result.messageType) {
-      return this.view.showMessage(result);
-    }
-
-    const { name, img } = result;
-
-    this.view.createNewRecipes(name, img);
-    this.view.modalHide();
-    return this.view.showMessage({ messageType: 'success', message: 'Новый рецепт создан' });
+    this.view.addNewRecept(result);
   };
 
   modalCreateContent = () => {
@@ -47,18 +35,10 @@ class Controller {
   };
 
   highlightItemsRecipe = nameItem => {
-    const { recipe } = this.model.items.get(nameItem);
+    const needCreateItem = this.model.highlightItemsRecipe(nameItem);
+    const recipe = this.model.getRecipeItem(nameItem);
 
-    const itemInfo = recipe.reduce((acc, name) => {
-      if (!this.model.items.get(name).isOpen) {
-        const img = this.model.getImgItem(name);
-
-        acc.push({ name, img });
-      }
-      return acc;
-    }, []);
-
-    this.view.highlightItem(recipe, itemInfo);
+    this.view.highlightItem(recipe, needCreateItem);
   };
 }
 

@@ -93,28 +93,32 @@ class View extends EventEmitter {
     const itemCreateName = this.createButton.getAttribute('data-name');
 
     if (!itemCreateName) {
-      return this.showMessage({ messageType: 'error', message: 'Необходимо выбрать рецепт' });
+      return this.errorMessage('Необходимо выбрать рецепт');
     }
 
     if (nameItemOnTable.length === 0) {
-      return this.showMessage({
-        messageType: 'info',
-        message: 'Чтобы создать новый предмет необходимо соединить несколько ингредиентов',
-      });
+      return this.infoMessage(
+        'Чтобы создать новый предмет необходимо соединить несколько ингредиентов'
+      );
     }
 
     return this.emit(CRAFT, { itemCreateName, nameItemOnTable });
   };
 
-  successCreate = (nameItem, { img, createItem = false }) => {
-    if (createItem) {
-      this.recipes.querySelector(`[data-name='${nameItem}']`).classList.add(SUCCESS);
+  addNewCraftItem = result => {
+    if (result.message) {
+      this.errorMessage(result.message);
+    } else {
+      const { name, img, createItem = false } = result;
+      if (createItem) {
+        this.recipes.querySelector(`[data-name='${name}']`).classList.add(SUCCESS);
 
-      this.createNewItem(nameItem, img);
+        this.createNewItem(name, img);
+      }
+
+      this.alchemist.classList.toggle(ROTATE);
+      setTimeout(this.clearTable, 500);
     }
-
-    this.alchemist.classList.toggle(ROTATE);
-    setTimeout(this.clearTable, 500);
   };
 
   dragStart = event => {
@@ -164,16 +168,10 @@ class View extends EventEmitter {
     }, []);
 
     if (needItemCraft.length < 1) {
-      return this.showMessage({
-        messageType: 'error',
-        message: 'Рецепт должен состоять хотя бы из 1 элемента',
-      });
+      return this.errorMessage('Рецепт должен состоять хотя бы из 1 элемента');
     }
     if (nameNewItem.length < 2) {
-      return this.showMessage({
-        messageType: 'error',
-        message: 'Название должно содержать минимум 2 символа',
-      });
+      return this.errorMessage('Название должно содержать минимум 2 символа');
     }
 
     if (file.length > 0 && IS_IMAGE.test(file[0].name)) {
@@ -198,6 +196,18 @@ class View extends EventEmitter {
       img,
     });
   };
+
+  addNewRecept(result) {
+    if (result.message) {
+      return this.errorMessage(result.message);
+    }
+
+    const { name, img } = result;
+
+    this.createNewRecipes(name, img);
+    this.modalHide();
+    return this.successMessage('Новый рецепт создан');
+  }
 
   modalCreateNewRecept = itemAll => {
     this.modalSelect.innerHTML = '';
@@ -303,7 +313,7 @@ class View extends EventEmitter {
     });
   };
 
-  showMessage = ({ messageType, message }) => {
+  showMessage = (messageType, message) => {
     this.message.innerHTML = '';
     const msg = create('div', { class: messageType }, message);
     const close = create('button', { id: 'closeMsg', type: 'button' }, '&times;');
@@ -314,6 +324,18 @@ class View extends EventEmitter {
 
     this.msgTimer = setTimeout(this.hideMessage, 2500);
   };
+
+  errorMessage(msg) {
+    this.showMessage('error', msg);
+  }
+
+  successMessage(msg) {
+    this.showMessage('success', msg);
+  }
+
+  infoMessage(msg) {
+    this.showMessage('info', msg);
+  }
 
   hideMessage = () => {
     this.message.style.display = 'none';

@@ -15,14 +15,14 @@ class Model {
     const isCraft = recipe.every(item => nameItemOnTable.some(needItem => needItem === item));
 
     let result = {
-      messageType: 'error',
       message: 'Для того чтобы получить новый ингредиент нужно следовать рецепту',
     };
 
     if (recipe.length === nameItemOnTable.length && isCraft) {
-      result = { img };
+      result = { name: itemCreateName };
       if (!isOpen) {
         this.items.get(itemCreateName).isOpen = true;
+        result.img = img;
         result.createItem = true;
       }
     }
@@ -32,10 +32,7 @@ class Model {
 
   addNewRecept({ nameNewItem, needItemCraft, img = '/images/icon/none.png' }) {
     if (this.items.has(nameNewItem)) {
-      return {
-        messageType: 'error',
-        message: 'Такой ингредиент уже есть',
-      };
+      return { message: 'Такой ингредиент уже есть' };
     }
 
     this.items.set(nameNewItem, { img, recipe: needItemCraft, isOpen: false });
@@ -43,10 +40,31 @@ class Model {
     return { name: nameNewItem, img };
   }
 
+  highlightItemsRecipe(nameItem) {
+    const recipe = this.getRecipeItem(nameItem);
+
+    const itemInfo = recipe.reduce((acc, name) => {
+      if (!this.items.get(name).isOpen) {
+        const img = this.getImgItem(name);
+
+        acc.push({ name, img });
+      }
+      return acc;
+    }, []);
+
+    return itemInfo;
+  }
+
   getImgItem(name) {
     const { img } = this.items.get(name);
 
     return img;
+  }
+
+  getRecipeItem(name) {
+    const { recipe } = this.items.get(name);
+
+    return recipe;
   }
 }
 
