@@ -14,14 +14,16 @@ function parallelLoad(urls) {
 
 function sequentialLoad(urls) {
   const data = urls.reduce((acc, url) => {
-    fetch(url)
-      .then(response => response.json())
-      .then(result => acc.push(result));
+    return acc.then(dataArray =>
+      fetch(url)
+        .then(response => response.json())
+        .then(result => [...dataArray, result])
+    );
+  }, Promise.resolve([]));
 
-    return acc;
-  }, []);
-
-  console.log(data);
+  data.then(dataArray => {
+    console.log(dataArray);
+  });
 }
 
 parallelLoad(listUrls);

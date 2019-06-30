@@ -5,9 +5,7 @@ class Musician {
 
   async getAlbums() {
     const data = await fetch(this.albumsUrl);
-    const result = await data.json();
-
-    return result;
+    return data.json();
   }
 }
 
