@@ -15,33 +15,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
-      },
-      {
-        test: /\.(svg|png|gif|jpg|webp)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[hash:8].[ext]',
-            outputPath: 'images',
-          },
-        },
-      },
-      {
-        test: /\.html$/,
-        use: ['html-loader'],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      title: 'JS Course',
     }),
   ],
 };
