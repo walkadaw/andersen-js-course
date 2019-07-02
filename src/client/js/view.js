@@ -80,10 +80,9 @@ class View extends EventEmitter {
   handleAdd(event) {
     event.preventDefault();
 
-    if (!this.input.value) return alert('Необходимо ввести текс');
+    if (!this.input.value) return alert('Необходимо вести текст');
 
-    this.emit('add', this.input.value);
-    return true;
+    return this.emit('add', this.input.value);
   }
 
   handleEdit({ target }) {
