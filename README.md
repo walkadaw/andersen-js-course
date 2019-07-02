@@ -7,6 +7,8 @@
 2. Установите Yarn - https://yarnpkg.com/ru/
 3. Если вы еще не поставили себе редактор кода, то можете поставить VSCode - https://code.visualstudio.com/
 4. Для удобства разработки вам понадобятся плагины для ESlint (https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) и Prettier (https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+5. Для старта Fronenda yarn start запустится за 8080 порту
+6. Для старта Backenda yarn server запустится на 9090 порту
 
 ## Подготовка к запуску
 * Находясь в папке с проектом выполните в консоле команду `yarn`. Эта команда установит все необходимые пакеты зависимостей.
